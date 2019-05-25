@@ -3,7 +3,7 @@ typedef struct elementoAgenda
     char nome[101];
     char telefoneCelular[11];
     char endereco[101];
-    int CEP;
+    char CEP[10];
     char dataNascimento[11];
     struct elementoAgenda *proximo;
     struct elementoAgenda *anterior;
@@ -12,10 +12,10 @@ typedef struct elementoAgenda
 
 FILE* abriArquivo(char *);
 
-contato* criaElementoInicio(contato*);
+contato* criaElemento(contato*);
 
 void preencheContato(contato*,char*);
 
 void libera(contato *);
 
-void execluiElemento(contato *);
+void excluiElemento(contato *);

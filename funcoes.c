@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 #include"funcoes.h"
 #define INICIO NULL
 #define FIM NULL
@@ -15,30 +16,39 @@ FILE* abriArquivo(char *arquivo)
     return a;
 }
 
-//cria elemento no inicio da lista
-contato* criaElementoInicio(contato* lista,char* nome)
+//cria elemento na lista
+contato* criaElemento(contato* lista)
 {
-    char nome[101];
-
-    scanf("%[^\n]",nome);
-
+    char nome[]={"joao normal"};
     contato *elem;
     //Aloca elemento
     elem = (contato*)malloc(sizeof(contato));
     if(elem==NULL){
         exit(-1);
     }
+
     //Inseri no inicio da lista
     if(lista==INICIO){
         elem->anterior = INICIO;
         elem->proximo = FIM;
     }
-    else
+    else if(lista->anterior==INICIO) 
     {
         elem->anterior = INICIO;
         elem->proximo = lista;
         lista->anterior = elem;
-
+    }
+    else if(lista->proximo==FIM)
+    {
+        elem->proximo = FIM;
+        lista->proximo = elem;
+        elem->anterior = lista; 
+    }
+    else
+    {
+        elem->proximo = lista;
+        elem->anterior = lista->anterior;
+        lista->anterior = elem->anterior;
     }
 
     preencheContato(elem,nome);
@@ -55,54 +65,32 @@ void preencheContato(contato* cont,char *nome)
         getchar();
         printf("Telefone (no formato xxxxx-xxxx):");
         scanf("%[^\n]",cont->telefoneCelular);
-    }while(cont->telefoneCelular[5]!='-' && strlen(cont->telefoneCelular!=5));
+    }while(cont->telefoneCelular[5]!='-' && strlen(cont->telefoneCelular)!=10);
 
     getchar();
     printf("Endereco:");
     scanf("%[^\n]",cont->endereco);
+
     getchar();
     printf("CEP:");
-    scanf("%d",&cont->CEP);
-    printf("%d",cont->CEP);
+    scanf("%s",cont->CEP);
 
-    do{
-    getchar();
-    printf("Data de nascimento(no formato dd/mm/aaaa):");
-    scanf("%s",cont->dataNascimento);
-    }while(strcmp(cont->dataNascimento[2],'/') && strcmp(cont->dataNascimento[5],'/')))
+ int aux,aux1;
+
+   do{
+        getchar();
+        printf("Data de nascimento(no formato dd/mm/aaaa):");
+        scanf("%[^\n]",cont->dataNascimento);
+        printf("%c",cont->dataNascimento[2]);
+
+        aux = strcmp(cont->dataNascimento[2],'/');
+        aux1 = strcmp(cont->dataNascimento[5],'/');
+
+    }while(aux!=0 && aux!=0);
 }
 
-contato* criaElementoMeio(contato* lista)
+void excluiElemento(contato* elem)
 {
-    contato *elem;
-
-    //Aloca elemento
-    elem = (contato*)malloc(sizeof(contato));
-    if(elem==NULL){
-        exit(-1);
-    }
-
-    if(lista->proximo==FIM)
-    {
-        elem->proximo = FIM;
-        lista->proximo = elem;
-        elem->anterior = lista; 
-    }
-    else
-    {
-        elem->proximo = lista;
-        elem->anterior = lista->anterior;
-        lista->anterior = elem->anterior;
-    }
-
-    preencheContato(elem);
-    
-    return elem;
-}
-
-void execluiElemento(contato *)
-{
-    contato* elem;
     contato* aux;
 
     if(elem->anterior==INICIO)

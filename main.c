@@ -7,7 +7,6 @@
 
 int main()
 {
-    char nome[101];
     FILE *dados;
     int opcao;
     contato *lista = INICIO;  
@@ -19,17 +18,16 @@ int main()
     {   
         printf("\nEscolha uma opção\n");
         printf("1 - Inserir novo contato\n");
-        printf("2 - Remover registros que contenham certa stringno nome\n");
+        printf("2 - Remover registros que contenham certa string no nome\n");
         printf("3 - Visualizar registros que contenham certa string no nome\n");
-        printf("4 - Visualizar todos os registros em ordem alfabética de acordo com o nome\n");
+        printf("4 - Visualizar elementos\n");
         printf("0 - Sair\n");
         scanf("%d",&opcao); 
 
         switch(opcao)
         {
         case 1:
-            scanf("%[^\n]",nome);
-            lista = criaElementoInicio(lista,nome);
+            lista = criaElemento(lista);
             break;
         case 2:
             break;
