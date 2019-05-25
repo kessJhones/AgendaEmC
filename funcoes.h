@@ -3,7 +3,7 @@ typedef struct elementoAgenda
     char nome[101];
     char telefoneCelular[11];
     char endereco[101];
-    char CEP[10];
+    unsigned int CEP[10];
     char dataNascimento[11];
     struct elementoAgenda *proximo;
     struct elementoAgenda *anterior;

@@ -73,20 +73,13 @@ void preencheContato(contato* cont,char *nome)
 
     getchar();
     printf("CEP:");
-    scanf("%s",cont->CEP);
-
- int aux,aux1;
+    scanf("%u",&cont->CEP);
 
    do{
         getchar();
         printf("Data de nascimento(no formato dd/mm/aaaa):");
         scanf("%[^\n]",cont->dataNascimento);
-        printf("%c",cont->dataNascimento[2]);
-
-        aux = strcmp(cont->dataNascimento[2],'/');
-        aux1 = strcmp(cont->dataNascimento[5],'/');
-
-    }while(aux!=0 && aux!=0);
+    }while(cont->dataNascimento[2]!='/' || cont->dataNascimento[5]!='/' && strlen(cont->dataNascimento)!=10);
 }
 
 void excluiElemento(contato* elem)
@@ -120,9 +113,10 @@ void libera(contato *l)
 {
     contato *atual;
 
-    for(atual = l; atual != FIM; l = atual)
+    for(atual = l; atual->proximo != FIM; l = atual)
     {
         atual = atual->proximo;
         free(l);
     }
+    free(atual);
 }
