@@ -1,3 +1,3 @@
 Agenda de contatos, utilizando listas duplamente encadeadas!!!
 
-[My image](KessJhones.github.com/projeto3/horse21.png)
+[My image](https://github.com/kessJhones/projeto3/blob/master/horse21.png)
