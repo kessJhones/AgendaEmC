@@ -21,6 +21,7 @@ int main()
         printf("2 - Remover registros que contenham certa string no nome\n");
         printf("3 - Visualizar registros que contenham certa string no nome\n");
         printf("4 - Visualizar elementos\n");
+        printf("6 - Deu ruim\n");
         printf("0 - Sair\n");
         scanf("%d",&opcao); 
 
